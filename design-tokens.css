@@ -1,0 +1,100 @@
+/* HydraSmart Design System - Color Tokens */
+:root {
+  /* Color Palette */
+  --color-background: #060D17;
+  --color-surface: #061326;
+  --color-primary: #2DA9F9;
+  --color-secondary: #1B90DE;
+  --color-accent: #F9A32D;
+  --color-text-primary: #F6F6F5;
+  --color-text-secondary: #E2E0E0;
+
+  /* Derived Colors */
+  --color-primary-light: #54B9FA;
+  --color-primary-dark: #1B90DE;
+  --color-secondary-light: #3A9FE2;
+  --color-secondary-dark: #1677B5;
+  --color-accent-light: #FAB556;
+  --color-accent-dark: #E08C14;
+
+  /* Transparency Variants */
+  --color-surface-10: rgba(6, 19, 38, 0.1);
+  --color-surface-20: rgba(6, 19, 38, 0.2);
+  --color-surface-50: rgba(6, 19, 38, 0.5);
+  --color-surface-80: rgba(6, 19, 38, 0.8);
+  
+  --color-primary-10: rgba(45, 169, 249, 0.1);
+  --color-primary-20: rgba(45, 169, 249, 0.2);
+  --color-primary-50: rgba(45, 169, 249, 0.5);
+  
+  --color-accent-10: rgba(249, 163, 45, 0.1);
+  --color-accent-20: rgba(249, 163, 45, 0.2);
+
+  /* Gradients */
+  --gradient-primary: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+  --gradient-surface: linear-gradient(135deg, var(--color-surface) 0%, var(--color-background) 100%);
+  --gradient-accent: linear-gradient(135deg, var(--color-accent) 0%, #F97A2D 100%);
+}
+
+/* Typography Scale */
+:root {
+  --font-family-heading: 'Outfit', sans-serif;
+  --font-family-body: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+  
+  --font-size-xs: 0.75rem;    /* 12px */
+  --font-size-sm: 0.875rem;   /* 14px */
+  --font-size-md: 1rem;       /* 16px */
+  --font-size-lg: 1.125rem;   /* 18px */
+  --font-size-xl: 1.25rem;    /* 20px */
+  --font-size-2xl: 1.5rem;    /* 24px */
+  --font-size-3xl: 1.875rem;  /* 30px */
+  --font-size-4xl: 2.25rem;   /* 36px */
+  --font-size-5xl: 3rem;      /* 48px */
+  
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  
+  --line-height-tight: 1.2;
+  --line-height-normal: 1.6;
+  --line-height-loose: 1.8;
+}
+
+/* Spacing System */
+:root {
+  --space-1: 0.25rem;   /* 4px */
+  --space-2: 0.5rem;    /* 8px */
+  --space-3: 0.75rem;   /* 12px */
+  --space-4: 1rem;      /* 16px */
+  --space-5: 1.5rem;    /* 24px */
+  --space-6: 2rem;      /* 32px */
+  --space-8: 3rem;      /* 48px */
+  --space-10: 4rem;     /* 64px */
+  --space-12: 5rem;     /* 80px */
+  --space-16: 8rem;     /* 128px */
+}
+
+/* Border Radius */
+:root {
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-full: 9999px;
+}
+
+/* Shadows */
+:root {
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.12);
+  --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.15);
+  --shadow-xl: 0 12px 24px rgba(0, 0, 0, 0.2);
+}
+
+/* Transitions */
+:root {
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s ease;
+  --transition-slow: 0.5s ease;
+}

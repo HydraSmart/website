@@ -1,0 +1,222 @@
+/* HydraSmart Updated Styling */
+@import url('design-tokens.css');
+
+/* === Base Styles === */
+html,
+body {
+  background-color: var(--color-background);
+  color: var(--color-text-primary);
+}
+
+a {
+  color: var(--color-primary);
+}
+
+a:hover {
+  color: var(--color-primary-light);
+}
+
+/* === Header Component === */
+.navbar {
+  background-color: var(--color-surface);
+  border-bottom: 1px solid rgba(246, 246, 245, 0.05);
+}
+
+.navbar.scrolled {
+  background: rgba(6, 19, 38, 0.85);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+
+.logo {
+  color: var(--color-primary);
+}
+
+.highlight {
+  color: var(--color-primary);
+}
+
+.nav-link {
+  color: var(--color-text-secondary);
+}
+
+.nav-link:hover, 
+.nav-link.active {
+  color: var(--color-text-primary);
+}
+
+.nav-link::after {
+  background-color: var(--color-primary);
+}
+
+/* === Hero Section === */
+.hero {
+  background: radial-gradient(circle at center, var(--color-surface) 0%, var(--color-background) 100%);
+}
+
+.hero h1 {
+  background: linear-gradient(to right, var(--color-text-primary), var(--color-primary));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.hero-highlight {
+  color: var(--color-primary);
+}
+
+/* === Buttons === */
+.btn {
+  border: 2px solid var(--color-primary);
+}
+
+.btn:after {
+  background: var(--color-primary);
+}
+
+.btn:hover {
+  color: var(--color-background);
+}
+
+.btn-fill {
+  background: var(--color-primary);
+  color: var(--color-background);
+}
+
+.btn-fill:hover {
+  color: var(--color-text-primary);
+}
+
+.product-btn {
+  border: 1px solid var(--color-primary);
+  color: var(--color-text-primary);
+}
+
+.product-btn:hover {
+  background: var(--color-primary);
+  color: var(--color-background);
+}
+
+/* === Cards === */
+.glass-card {
+  background: rgba(6, 19, 38, 0.6);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(246, 246, 245, 0.05);
+}
+
+/* === Feature Cards === */
+.feature-icon {
+  color: var(--color-primary);
+}
+
+/* === Newsletter === */
+.newsletter {
+  background: var(--color-surface-10);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(246, 246, 245, 0.05);
+}
+
+.newsletter::before {
+  background: radial-gradient(circle at center, rgba(45, 169, 249, 0.15) 0%, rgba(0, 0, 0, 0) 70%);
+}
+
+.newsletter input {
+  background: rgba(6, 19, 38, 0.3);
+  border: 1px solid rgba(246, 246, 245, 0.05);
+  color: var(--color-text-primary);
+}
+
+.newsletter input:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 2px rgba(45, 169, 249, 0.2);
+}
+
+.newsletter input::placeholder {
+  color: rgba(226, 224, 224, 0.5);
+}
+
+.newsletter .submit-btn {
+  background: var(--color-accent);
+  color: var(--color-background);
+}
+
+/* === Product Cards === */
+.product-price {
+  color: var(--color-primary);
+}
+
+.product-description {
+  color: var(--color-text-secondary);
+}
+
+/* === Reviews === */
+.review-rating {
+  color: var(--color-accent);
+}
+
+.review-text {
+  color: var(--color-text-primary);
+}
+
+.review-info p {
+  color: var(--color-text-secondary);
+}
+
+/* === Footer === */
+footer {
+  border-top: 1px solid rgba(45, 169, 249, 0.15);
+}
+
+.footer-column h4::after {
+  background: var(--color-primary);
+}
+
+.footer-column p {
+  color: var(--color-text-secondary);
+}
+
+.footer-links a {
+  color: var(--color-text-secondary);
+}
+
+.footer-links a:hover {
+  color: var(--color-primary);
+}
+
+.social-link {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--color-text-primary);
+}
+
+.social-link:hover {
+  background: var(--color-primary);
+  color: var(--color-background);
+}
+
+.copyright {
+  color: var(--color-text-secondary);
+}
+
+/* === Parallax Elements === */
+.parallax-overlay {
+  background: rgba(6, 19, 38, 0.7);
+}
+
+/* === Decorative Elements === */
+.bubble {
+  background: radial-gradient(circle at 30% 20%, rgba(45, 169, 249, 0.8) 0%, rgba(27, 144, 222, 0.5) 50%, rgba(6, 19, 38, 0.3) 100%);
+  box-shadow: inset 10px 10px 10px rgba(255, 255, 255, 0.3),
+              15px 25px 10px rgba(0, 0, 0, 0.1),
+              inset -10px -10px 15px rgba(6, 19, 38, 0.4);
+}
+
+.glow {
+  background: radial-gradient(circle at center, rgba(45, 169, 249, 0.2) 0%, rgba(0, 0, 0, 0) 70%);
+}
+
+/* === Accent Elements === */
+.centered-banner {
+  background: rgba(249, 163, 45, 0.1);
+}
