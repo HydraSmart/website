@@ -10,6 +10,7 @@
     <meta name="theme-color" content="#001d9d" />
     <meta name="description" content="Transform any bottle into a smart hydration device with our innovative water bottle puck. Keep the bottle you love while tracking intake with precision." />
     <style>
+      
       /* === Global Reset === */
       *,
       *::before,
@@ -18,6 +19,42 @@
         padding: 0;
         box-sizing: border-box;
       }
+.waitlist-form {
+    margin-top: 1rem;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(12px);
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    display: none; /* Initially hidden */
+}
+
+.waitlist-form input {
+    width: 100%;
+    padding: 1rem;
+    margin: 0.5rem 0;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    color: #ffffff;
+}
+
+.submit-btn {
+    background: #00e5ff;
+    color: #001d9d;
+    font-weight: 600;
+    padding: 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 1rem;
+    transition: background 0.3s ease;
+}
+.submit-btn:hover {
+    background: #0091ff;
+}
+
 
       html,
       body {
@@ -435,17 +472,17 @@
 
       /* === Products Section === */
       .products-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-        gap: 2.5rem;
-        margin-top: 4rem;
-      }
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+}
+.product-card {
+    flex: 1;
+    max-width: 400px;
+    text-align: center;
+}
 
-      .product-card {
-        display: flex;
-        flex-direction: column;
-        text-align: left;
-      }
 
       .product-image {
         border-radius: 12px;
@@ -958,6 +995,16 @@
     <link rel="stylesheet" href="updated-styles.css" />
   </head>
   <body>    <!-- Navigation -->
+  <div class="waitlist-form" style="display: none;">
+    <h3>Join the Waitlist</h3>
+    <form id="waitlist-form">
+        <input type="text" name="name" placeholder="Your Name" required>
+        <input type="email" name="email" placeholder="Your Email" required>
+        <button type="submit" class="submit-btn">Sign Up</button>
+    </form>
+</div>
+
+</div>
     <nav class="navbar">
       <div class="container navbar-container">        <a href="#" class="logo">
           <img src="C:\Users\maxim\OneDrive\Documents\GitHub\website\HydraSmartIcon.png" alt="Hydra Smart Logo" class="logo-icon" />
@@ -1180,7 +1227,7 @@
         <h3 class="product-title">HydraSmart Puck Essential</h3>
         <p class="product-price">Coming Soon
         <p class="product-description">Our universal hydration puck that attaches to the base of any water bottle. Features basic hydration tracking, personalized recommendations, and 30-day battery life.</p>
-        <a href="#" class="product-btn">Pre-Order Coming Soon</a>
+        <a href="#" class="product-btn">Join Waitlist</a>
       </div>
 
       <div class="product-card glass-card">
@@ -1190,7 +1237,7 @@
         <h3 class="product-title">HydraSmart Puck Pregnancy+</h3>
         <p class="product-price">Coming Soon
         <p class="product-description">Specialized hydration puck designed for pregnancy and postpartum needs with trimester-specific algorithms, health app integration, and gentle hydration reminders.</p>
-        <a href="#" class="product-btn">Pre-Order Coming Soon</a>
+        <a href="#" class="product-btn">Join Waitlist</a>
       </div>
     </div>
   </div>
@@ -1345,153 +1392,153 @@
     </footer>
 
     <!-- JavaScript -->
-    <script>
-      // Navbar scroll effect
-      window.addEventListener('scroll', function() {
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    // Navbar Scroll Effect
+    window.addEventListener('scroll', function () {
         const navbar = document.querySelector('.navbar');
         if (window.scrollY > 50) {
-          navbar.classList.add('scrolled');
+            navbar.classList.add('scrolled');
         } else {
-          navbar.classList.remove('scrolled');
+            navbar.classList.remove('scrolled');
         }
-      });
+    });
 
-      // Mobile menu toggle
-      const menuToggle = document.querySelector('.menu-toggle');
-      const navLinks = document.querySelector('.nav-links');
+    // Mobile Menu Toggle
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
 
-      menuToggle.addEventListener('click', function() {
+    menuToggle.addEventListener('click', function () {
         navLinks.classList.toggle('active');
-      });
+    });
 
-      // Close mobile menu when a link is clicked
-      document.querySelectorAll('.nav-link').forEach(link => {
+    // Close mobile menu when a link is clicked
+    document.querySelectorAll('.nav-link').forEach(link => {
         link.addEventListener('click', () => {
-          navLinks.classList.remove('active');
+            navLinks.classList.remove('active');
         });
-      });
+    });
 
-      // Active link highlight on scroll
-      const sections = document.querySelectorAll('section');
-      const navLi = document.querySelectorAll('.navbar .nav-links li a');
+    // Active link highlight on scroll
+    const sections = document.querySelectorAll('section');
+    const navLi = document.querySelectorAll('.navbar .nav-links li a');
 
-      window.addEventListener('scroll', () => {
-        let current = '';
-
+    window.addEventListener('scroll', () => {
+        let current = "";
         sections.forEach(section => {
-          const sectionTop = section.offsetTop;
-          const sectionHeight = section.clientHeight;
-
-          if (window.scrollY >= (sectionTop - 200)) {
-            current = section.getAttribute('id');
-          }
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.clientHeight;
+            if (window.scrollY >= (sectionTop - 200)) {
+                current = section.getAttribute('id');
+            }
         });
 
         navLi.forEach(li => {
-          li.classList.remove('active');
-          if (li.getAttribute('href') === '#' + current) {
-            li.classList.add('active');
-          } else if (current === '' && li.getAttribute('href') === '#') {
-            li.classList.add('active');
-          }
+            li.classList.remove('active');
+            if (li.getAttribute('href') === '#' + current) {
+                li.classList.add('active');
+            } else if (current === "" && li.getAttribute('href') === '#') {
+                li.classList.add('active');
+            }
         });
-      });
+    });
 
-      // Animate water droplet bubbles with parallax effect
-      const bubbles = document.querySelectorAll('.bubble');
+    // Toggle "Join Waitlist" Form Below Product Options
+    const joinWaitlistBtns = document.querySelectorAll(".product-btn");
 
-      bubbles.forEach(bubble => {
-        // Random starting positions
+    joinWaitlistBtns.forEach(button => {
+        button.addEventListener("click", function (event) {
+            event.preventDefault();
+            console.log("Join Waitlist button clicked!");
+
+            // Locate the correct waitlist form inside the product-card
+            const productCard = this.closest(".product-card");
+            if (!productCard) {
+                console.error("Product card not found!");
+                return;
+            }
+
+            const waitlistForm = productCard.querySelector(".waitlist-form");
+            if (!waitlistForm) {
+                console.error("Waitlist form not found inside product card!");
+                return;
+            }
+
+            // Toggle visibility of the waitlist form
+            waitlistForm.style.display = (waitlistForm.style.display === "none" || !waitlistForm.style.display) ? "block" : "none";
+        });
+    });
+
+    // Handle Form Submission
+    document.querySelectorAll(".waitlist-form form").forEach(form => {
+        form.addEventListener("submit", function (event) {
+            event.preventDefault();
+            alert("You've successfully joined the waitlist! 🎉");
+            this.style.display = "none"; // Hide form after submission
+        });
+    });
+
+    // Animate water droplet bubbles with parallax effect
+    const bubbles = document.querySelectorAll('.bubble');
+    bubbles.forEach(bubble => {
         const startX = Math.random() * 20 - 10;
         const startY = Math.random() * 20 - 10;
         const rotation = Math.random() * 360;
         const scale = 0.8 + Math.random() * 0.4;
 
-        // Set random speed (for parallax effect)
         bubble.setAttribute('data-speed', (0.1 + Math.random() * 0.2).toFixed(2));
-
-        // Apply initial transform
         bubble.style.transform = `translate(${startX}px, ${startY}px) rotate(${rotation}deg) scale(${scale})`;
-      });
+    });
 
-      // Add parallax effect to bubbles on mousemove and scroll
-      document.addEventListener('mousemove', e => {
+    // Parallax effect for bubbles on mousemove
+    document.addEventListener('mousemove', e => {
         const mouseX = e.clientX / window.innerWidth - 0.5;
         const mouseY = e.clientY / window.innerHeight - 0.5;
-
         bubbles.forEach(bubble => {
-          const speed = parseFloat(bubble.getAttribute('data-speed'));
-          const offsetX = mouseX * 30 * speed;
-          const offsetY = mouseY * 30 * speed;
+            const speed = parseFloat(bubble.getAttribute('data-speed'));
+            const offsetX = mouseX * 30 * speed;
+            const offsetY = mouseY * 30 * speed;
 
-          // Apply mouse parallax movement while preserving existing transforms
-          const transforms = bubble.style.transform.split(') ');
-          const newTransforms = [];
-
-          for (let transform of transforms) {
-            if (!transform.includes('translate(')) {
-              newTransforms.push(transform);
+            const transforms = bubble.style.transform.split(')');
+            const newTransforms = [];
+            for (let transform of transforms) {
+                if (!transform.includes('translate(')) {
+                    newTransforms.push(transform);
+                }
             }
-          }
-
-          newTransforms.unshift(`translate(${offsetX}px, ${offsetY}px)`);
-          bubble.style.transform = newTransforms.join(') ') + (newTransforms.length > 1 ? ')' : '');
+            newTransforms.unshift(`translate(${offsetX}px, ${offsetY}px)`);
+            bubble.style.transform = newTransforms.join(')') + (newTransforms.length > 1 ? ')' : '');
         });
-      });
+    });
 
-      // Add scroll effect to bubbles
-      window.addEventListener('scroll', function() {
-        const scrollY = window.scrollY;
-
-        bubbles.forEach(bubble => {
-          const speed = parseFloat(bubble.getAttribute('data-speed'));
-          const offsetY = scrollY * speed * 0.1;
-
-          // Extract and update just the translate part
-          const transforms = bubble.style.transform.split(') ');
-          const translateMatch = /translate\(([^,]+),\s*([^)]+)\)/.exec(transforms[0]);
-
-          if (translateMatch) {
-            const currentX = parseFloat(translateMatch[1]);
-            transforms[0] = `translate(${currentX}px, ${offsetY}px)`;
-            bubble.style.transform = transforms.join(') ') + (transforms.length > 1 ? ')' : '');
-          }
-        });
-      });
-
-      // Parallax scroll effect
-      window.addEventListener('scroll', function() {
+    // Parallax scroll effect for background images
+    window.addEventListener('scroll', function () {
         const parallaxBgs = document.querySelectorAll('.parallax-bg');
         const scrollPosition = window.pageYOffset;
 
         parallaxBgs.forEach(bg => {
-          const container = bg.closest('.parallax-container');
-          const containerTop = container.offsetTop;
-          const containerHeight = container.offsetHeight;
+            const container = bg.closest('.parallax-container');
+            const containerTop = container.offsetTop;
+            const containerHeight = container.offsetHeight;
 
-          // Check if section is in viewport
-          if (scrollPosition + window.innerHeight > containerTop &&
-              scrollPosition < containerTop + containerHeight) {
-
-            // Calculate relative position of the section in the viewport
-            const relativePos = scrollPosition - containerTop;
-
-            // Apply parallax effect (slower scroll for background)
-            bg.style.transform = `translateY(${relativePos * 0.4}px)`;
-          }
+            if (scrollPosition + window.innerHeight > containerTop && scrollPosition < containerTop + containerHeight) {
+                const relativePos = scrollPosition - containerTop;
+                bg.style.transform = `translateY(${relativePos * 0.4}px)`;
+            }
         });
 
-        // Add parallax effect for separator sections
+        // Parallax effect for separator sections
         const separators = document.querySelectorAll('.parallax-separator');
-
         separators.forEach(separator => {
-          const speed = 0.5; // Adjust this value to control the speed
-          const yPos = -(scrollPosition * speed);
-
-          // Update background position
-          separator.style.backgroundPosition = `center ${yPos}px`;
+            const speed = 0.5;
+            const yPos = -(scrollPosition * speed);
+            separator.style.backgroundPosition = `center ${yPos}px`;
         });
-      });
-    </script>
+    });
+});
+
+console.log("JavaScript is running!");
+</script>
+
   </body>
 </html>
