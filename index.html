@@ -1397,7 +1397,7 @@
     <section class="container">      <div class="newsletter" id="contact">
         <h3>Be First to Hydra<span class="highlight">Smart</span></h3>
         <p class="newsletter-tagline">Join pregnant and postpartum women prioritizing hydration health for the entire family.</p>
-        <form name="contact" method="POST" data-netlify="true" onsubmit="handleSubmit(event)">
+        <form name="contact" netlify>
           <input type="hidden" name="form-name" value="contact" />
           <div class="form-row">
             <input type="text" name="firstName" placeholder="First Name" required />
@@ -1406,13 +1406,6 @@
           <input type="email" name="email" placeholder="Email Address" required />
           <button class="submit-btn" type="submit">Get HydraSmart</button>
         </form>
-        <script>
-          function handleSubmit(e) {
-            alert('Submitted');
-            // Let Netlify handle the form normally
-          }
-        </script>
-
       </div>
     </section>
 
