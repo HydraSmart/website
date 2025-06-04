@@ -1,0 +1,385 @@
+/* HydraSmart - Inline Styles Migration */
+/* This file contains all styles that were previously inline */
+
+/* ========= UTILITY CLASSES ========= */
+.hidden {
+  display: none;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.full-width-image {
+  width: 100%;
+  height: auto;
+}
+
+/* ========= BRANDING ========= */
+.brand-highlight {
+  color: turquoise;
+}
+
+/* ========= LAYOUT COMPONENTS ========= */
+.market-section {
+  background: rgba(0, 29, 157, 0.1);
+}
+
+.business-section {
+  background: linear-gradient(135deg, rgba(0, 229, 255, 0.1) 0%, rgba(0, 145, 255, 0.05) 100%);
+}
+
+.market-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  margin-top: 4rem;
+  align-items: center;
+}
+
+.business-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 4rem;
+}
+
+.mission-vision-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  text-align: left;
+  margin-bottom: 2rem;
+}
+
+.financial-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  text-align: left;
+}
+
+.go-to-market-center {
+  text-align: center;
+  margin-top: 3rem;
+}
+
+.financial-center {
+  margin-top: 4rem;
+  text-align: center;
+}
+
+/* ========= CARD COMPONENTS ========= */
+.glass-card {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  padding: 2rem;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.glass-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 40px rgba(0, 229, 255, 0.2);
+  border-color: rgba(0, 229, 255, 0.3);
+}
+
+.glass-card--large {
+  padding: 3rem;
+}
+
+.glass-card--extra-large {
+  padding: 3rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.glass-card--inline {
+  padding: 2rem;
+  display: inline-block;
+}
+
+.glass-card--center {
+  max-width: 900px;
+  text-align: center;
+}
+
+.glass-card--business {
+  padding: 2.5rem;
+  text-align: center;
+}
+
+.glass-card--financial {
+  padding: 3rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* ========= HIGHLIGHT BOXES ========= */
+.highlight-box {
+  background: rgba(0, 229, 255, 0.1);
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin: 2rem 0;
+}
+
+.highlight-box--large {
+  background: rgba(0, 229, 255, 0.1);
+  border-radius: 12px;
+  padding: 2rem;
+  margin-top: 2rem;
+}
+
+.danger-box {
+  background: rgba(255, 0, 0, 0.1);
+  border-left: 4px solid #ff4444;
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+}
+
+.newsletter-highlight {
+  margin: 1.5rem 0;
+  padding: 1rem;
+  background: rgba(0, 229, 255, 0.1);
+  border-radius: 8px;
+}
+
+/* ========= TYPOGRAPHY ========= */
+.heading-primary {
+  color: #00e5ff;
+  margin-bottom: 1.5rem;
+  font-size: 1.8rem;
+}
+
+.heading-secondary {
+  color: #ffffff;
+  margin-bottom: 0.5rem;
+}
+
+.heading-tertiary {
+  color: #ffffff;
+  margin-bottom: 1rem;
+}
+
+.heading-business {
+  color: #ffffff;
+  margin-bottom: 1rem;
+}
+
+.heading-financial {
+  color: #00e5ff;
+  margin-bottom: 2rem;
+  font-size: 1.8rem;
+}
+
+.heading-mission {
+  color: #00e5ff;
+  margin-bottom: 1rem;
+  font-size: 1.6rem;
+}
+
+.heading-patent {
+  color: #00e5ff;
+  margin-bottom: 1rem;
+}
+
+.heading-waitlist {
+  color: #00e5ff;
+  margin-bottom: 1rem;
+}
+
+.heading-danger {
+  color: #ff4444;
+  margin-bottom: 0.5rem;
+}
+
+.text-large {
+  font-size: 1.2rem;
+}
+
+.text-medium {
+  font-size: 1.1rem;
+}
+
+.text-small {
+  font-size: 0.9rem;
+}
+
+.text-primary {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.text-secondary {
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 1rem;
+}
+
+.text-tertiary {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.text-bright {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.text-highlight {
+  color: #00e5ff;
+  font-weight: 600;
+}
+
+.text-financial {
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 0.5rem;
+}
+
+.text-about {
+  margin-bottom: 3rem;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 1.2rem;
+}
+
+.text-growth-projection {
+  margin: 0;
+  font-weight: 500;
+}
+
+.text-go-to-market {
+  color: rgba(255, 255, 255, 0.9);
+  max-width: 800px;
+}
+
+/* ========= ICON STYLES ========= */
+.icon-large {
+  font-size: 3rem;
+  color: #00e5ff;
+  margin-bottom: 1.5rem;
+}
+
+.icon-heart {
+  color: #00e5ff;
+}
+
+/* ========= FORM COMPONENTS ========= */
+.waitlist-form {
+  display: none;
+}
+
+.form-select {
+  width: 100%;
+  padding: 1rem;
+  margin: 0.5rem 0;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  color: #ffffff;
+}
+
+.form-select--newsletter {
+  width: 100%;
+  padding: 1rem 1.2rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  color: #ffffff;
+  font-size: 0.95rem;
+  outline: none;
+  transition: all 0.3s ease;
+  margin-bottom: 1rem;
+}
+
+/* ========= SPACING UTILITIES ========= */
+.margin-bottom-1 {
+  margin-bottom: 1rem;
+}
+
+.margin-bottom-15 {
+  margin-bottom: 1.5rem;
+}
+
+.margin-bottom-2 {
+  margin-bottom: 2rem;
+}
+
+.margin-top-2 {
+  margin-top: 2rem;
+}
+
+.margin-0 {
+  margin: 0;
+}
+
+.no-margin-bottom {
+  margin-bottom: 0;
+}
+
+/* ========= RESPONSIVE DESIGN ========= */
+@media (max-width: 768px) {
+  .market-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .mission-vision-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .financial-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .business-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .glass-card--large {
+    padding: 2rem;
+  }
+  
+  .glass-card--extra-large {
+    padding: 2rem;
+  }
+  
+  .financial-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    text-align: center;
+  }
+  
+  .glass-card--business,
+  .glass-card--financial {
+    padding: 2rem;
+  }
+}
+
+/* ========= WEBKIT COMPATIBILITY ========= */
+.glass-card {
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+
+/* Navigation backdrop filter fix */
+nav {
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+}
+
+/* Patent Information Box */
+.patent-info-box {
+  margin: 1.5rem 0;
+  padding: 1rem;
+  background: rgba(0, 229, 255, 0.1);
+  border-radius: 8px;
+}
+
+.patent-info-text {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0;
+}
