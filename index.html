@@ -1503,41 +1503,6 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
-    // Toggle "Join Waitlist" Form Below Product Options
-    const joinWaitlistBtns = document.querySelectorAll(".product-btn");
-
-    joinWaitlistBtns.forEach(button => {
-        button.addEventListener("click", function (event) {
-            event.preventDefault();
-            console.log("Join Waitlist button clicked!");
-
-            // Locate the correct waitlist form inside the product-card
-            const productCard = this.closest(".product-card");
-            if (!productCard) {
-                console.error("Product card not found!");
-                return;
-            }
-
-            const waitlistForm = productCard.querySelector(".waitlist-form");
-            if (!waitlistForm) {
-                console.error("Waitlist form not found inside product card!");
-                return;
-            }
-
-            // Toggle visibility of the waitlist form
-            waitlistForm.style.display = (waitlistForm.style.display === "none" || !waitlistForm.style.display) ? "block" : "none";
-        });
-    });
-
-    // Handle Form Submission
-    document.querySelectorAll(".waitlist-form form").forEach(form => {
-        form.addEventListener("submit", function (event) {
-            event.preventDefault();
-            alert("You've successfully joined the waitlist! 🎉");
-            this.style.display = "none"; // Hide form after submission
-        });
-    });
-
     // Animate water droplet bubbles with parallax effect
     const bubbles = document.querySelectorAll('.bubble');
     bubbles.forEach(bubble => {
