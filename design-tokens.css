@@ -34,6 +34,15 @@
   --gradient-primary: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
   --gradient-surface: linear-gradient(135deg, var(--color-surface) 0%, var(--color-background) 100%);
   --gradient-accent: linear-gradient(135deg, var(--color-accent) 0%, #F97A2D 100%);
+
+  /* Page Background (top-to-bottom) */
+  --gradient-page: linear-gradient(
+    180deg,
+    #071a33 0%,
+    var(--color-surface) 28%,
+    var(--color-background) 70%,
+    #02040b 100%
+  );
 }
 
 /* Typography Scale */
