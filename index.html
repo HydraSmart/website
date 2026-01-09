@@ -1123,6 +1123,96 @@
       margin: 0 auto;
     }
 
+    /* === MISSION & VISION CHAPTER === */
+    .mission-vision-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 3rem;
+      margin-top: 3rem;
+    }
+
+    .mission-vision-card {
+      background: linear-gradient(135deg, rgba(0, 229, 255, 0.08) 0%, rgba(0, 29, 157, 0.15) 100%);
+      border: 1px solid rgba(0, 229, 255, 0.2);
+      border-radius: 24px;
+      padding: 3rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    .mission-vision-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--color-cyan), var(--color-royal-blue), var(--color-cyan));
+      background-size: 200% 100%;
+      animation: shimmerLine 3s linear infinite;
+    }
+
+    @keyframes shimmerLine {
+      0% { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
+    }
+
+    .mission-vision-card:hover {
+      transform: translateY(-8px);
+      border-color: var(--color-cyan);
+      box-shadow: 0 20px 60px rgba(0, 229, 255, 0.15);
+    }
+
+    .mission-vision-icon {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto 1.5rem;
+      background: linear-gradient(135deg, var(--color-cyan), var(--color-royal-blue));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      color: var(--color-white);
+      box-shadow: 0 10px 40px rgba(0, 229, 255, 0.3);
+    }
+
+    .mission-vision-title {
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--color-white);
+      margin-bottom: 1.25rem;
+    }
+
+    .mission-vision-text {
+      color: var(--color-white-soft);
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+
+    @media (max-width: 768px) {
+      .mission-vision-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .mission-vision-card {
+        padding: 2rem;
+      }
+
+      .mission-vision-title {
+        font-size: 1.5rem;
+      }
+
+      .mission-vision-text {
+        font-size: 1rem;
+      }
+    }
+
+    /* === OUR VALUES CHAPTER === */
     .values-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -1788,6 +1878,7 @@
     <div class="progress-dot" data-section="discovery" data-label="Discovery"></div>
     <div class="progress-dot" data-section="solution" data-label="Solution"></div>
     <div class="progress-dot" data-section="technology" data-label="Technology"></div>
+    <div class="progress-dot" data-section="mission-vision" data-label="Mission & Vision"></div>
     <div class="progress-dot" data-section="values" data-label="Values"></div>
     <div class="progress-dot" data-section="product" data-label="Product"></div>
     <div class="progress-dot" data-section="join" data-label="Join"></div>
@@ -1993,11 +2084,47 @@
     </div>
   </section>
 
-  <!-- CHAPTER 5: OUR VALUES -->
+  <!-- GLOWING DIVIDER -->
+  <div class="glow-divider"></div>
+
+  <!-- CHAPTER 5: MISSION & VISION -->
+  <section id="mission-vision" class="chapter chapter-gradient">
+    <div class="container">
+      <div class="reveal" style="text-align: center; margin-bottom: 3rem;">
+        <span class="chapter-number">Chapter Five</span>
+        <h2 class="chapter-title">Our <span class="highlight">Purpose</span></h2>
+      </div>
+
+      <div class="mission-vision-grid stagger-children reveal">
+        <!-- Mission Card -->
+        <div class="mission-vision-card hover-lift">
+          <div class="mission-vision-icon">
+            <i class="fas fa-bullseye"></i>
+          </div>
+          <h3 class="mission-vision-title">Our Mission</h3>
+          <p class="mission-vision-text">Prevent dehydration before it causes real health consequences by translating everyday drinking behavior into personalized, clinically grounded hydration guidance people can actually follow.</p>
+        </div>
+
+        <!-- Vision Card -->
+        <div class="mission-vision-card hover-lift">
+          <div class="mission-vision-icon">
+            <i class="fas fa-eye"></i>
+          </div>
+          <h3 class="mission-vision-title">Our Vision</h3>
+          <p class="mission-vision-text">A future where hydration is no longer guesswork or generic advice, but an intelligent, adaptive system that quietly supports health, performance, and recovery—starting when the stakes are highest and lasting for life.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GLOWING DIVIDER -->
+  <div class="glow-divider"></div>
+
+  <!-- CHAPTER 6: OUR VALUES -->
   <section id="values" class="chapter chapter-gradient">
     <div class="container">
       <div class="mission-content reveal">
-        <span class="chapter-number">Chapter Five</span>
+        <span class="chapter-number">Chapter Six</span>
         <h2 class="chapter-title">What We <span class="highlight">Stand For</span></h2>
         <p class="chapter-text" style="max-width: 700px; margin: 0 auto;">Our goal is not to add another app to manage, but to make hydration effortless, measurable, and reliable—starting with pregnancy, and built to scale far beyond it.</p>
       </div>
@@ -2034,11 +2161,11 @@
   <!-- GLOWING DIVIDER -->
   <div class="glow-divider"></div>
 
-  <!-- CHAPTER 6: THE PRODUCT -->
+  <!-- CHAPTER 7: THE PRODUCT -->
   <section id="product" class="chapter chapter-dark">
     <div class="container">
       <div class="product-showcase reveal">
-        <span class="chapter-number">Chapter Six</span>
+        <span class="chapter-number">Chapter Seven</span>
         <h2 class="chapter-title">Your Journey <span class="highlight">Begins</span></h2>
         <p class="chapter-text" style="max-width: 600px; margin: 0 auto;">Choose the hydration experience that fits your lifestyle.</p>
 
@@ -2234,6 +2361,7 @@
         { id: 'discovery', element: document.querySelector('.discovery-content')?.closest('.chapter') },
         { id: 'solution', element: document.getElementById('solution') },
         { id: 'technology', element: document.getElementById('technology') },
+        { id: 'mission-vision', element: document.getElementById('mission-vision') },
         { id: 'values', element: document.querySelector('.values-grid')?.closest('.chapter') },
         { id: 'product', element: document.getElementById('product') },
         { id: 'join', element: document.getElementById('join') }
