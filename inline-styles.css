@@ -383,3 +383,66 @@ nav {
   color: rgba(255, 255, 255, 0.9);
   margin: 0;
 }
+
+/* ========= OUR STORY SECTION ========= */
+.story-origin {
+  text-align: left;
+  margin-bottom: 2.5rem;
+}
+
+.story-origin .text-about {
+  margin-bottom: 0;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.story-values {
+  text-align: left;
+  margin-bottom: 2rem;
+}
+
+.values-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.value-item {
+  position: relative;
+  padding-left: 1.5rem;
+  margin-bottom: 1.25rem;
+  line-height: 1.6;
+}
+
+.value-item::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: #00e5ff;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.value-title {
+  color: #00e5ff;
+  font-weight: 600;
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.value-description {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1rem;
+}
+
+.story-closing {
+  text-align: center;
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1.1rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  margin-top: 1rem;
+}
