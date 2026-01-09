@@ -44,6 +44,504 @@
       overflow-x: hidden;
     }
 
+    /* === IMMERSIVE PARALLAX BACKGROUND === */
+    .parallax-ocean {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -10;
+      overflow: hidden;
+      background: linear-gradient(180deg, 
+        #000428 0%, 
+        #000c5a 20%, 
+        #001d9d 50%, 
+        #0041c2 80%, 
+        #00e5ff 100%
+      );
+    }
+
+    /* Deep ocean gradient layers */
+    .ocean-layer {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      opacity: 0.6;
+    }
+
+    .ocean-layer-1 {
+      background: radial-gradient(ellipse at 20% 80%, rgba(0, 229, 255, 0.15) 0%, transparent 50%);
+      animation: driftSlow 30s ease-in-out infinite alternate;
+    }
+
+    .ocean-layer-2 {
+      background: radial-gradient(ellipse at 80% 20%, rgba(0, 145, 255, 0.1) 0%, transparent 40%);
+      animation: driftMedium 25s ease-in-out infinite alternate-reverse;
+    }
+
+    .ocean-layer-3 {
+      background: radial-gradient(ellipse at 50% 50%, rgba(0, 229, 255, 0.08) 0%, transparent 60%);
+      animation: breathe 8s ease-in-out infinite;
+    }
+
+    @keyframes driftSlow {
+      0% { transform: translate(0, 0) scale(1); }
+      100% { transform: translate(5%, -3%) scale(1.1); }
+    }
+
+    @keyframes driftMedium {
+      0% { transform: translate(0, 0) rotate(0deg); }
+      100% { transform: translate(-3%, 5%) rotate(3deg); }
+    }
+
+    @keyframes breathe {
+      0%, 100% { opacity: 0.5; transform: scale(1); }
+      50% { opacity: 0.8; transform: scale(1.05); }
+    }
+
+    /* Animated light rays from surface */
+    .light-rays {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      opacity: 0.4;
+    }
+
+    .light-ray {
+      position: absolute;
+      top: -20%;
+      width: 3px;
+      height: 150%;
+      background: linear-gradient(180deg, 
+        rgba(0, 229, 255, 0.8) 0%, 
+        rgba(0, 229, 255, 0.3) 30%,
+        rgba(0, 229, 255, 0.1) 60%,
+        transparent 100%
+      );
+      transform-origin: top center;
+      animation: rayShimmer 10s ease-in-out infinite;
+    }
+
+    .light-ray:nth-child(1) { left: 10%; animation-delay: 0s; width: 2px; }
+    .light-ray:nth-child(2) { left: 25%; animation-delay: 2s; width: 4px; }
+    .light-ray:nth-child(3) { left: 40%; animation-delay: 4s; width: 2px; }
+    .light-ray:nth-child(4) { left: 55%; animation-delay: 1s; width: 3px; }
+    .light-ray:nth-child(5) { left: 70%; animation-delay: 3s; width: 2px; }
+    .light-ray:nth-child(6) { left: 85%; animation-delay: 5s; width: 4px; }
+
+    @keyframes rayShimmer {
+      0%, 100% { opacity: 0.3; transform: rotate(-2deg) scaleY(1); }
+      25% { opacity: 0.6; transform: rotate(1deg) scaleY(1.05); }
+      50% { opacity: 0.4; transform: rotate(-1deg) scaleY(0.95); }
+      75% { opacity: 0.7; transform: rotate(2deg) scaleY(1.02); }
+    }
+
+    /* Floating particles system */
+    .particles {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    .particle {
+      position: absolute;
+      width: var(--size, 4px);
+      height: var(--size, 4px);
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.8) 0%, rgba(0, 229, 255, 0.4) 50%, transparent 100%);
+      border-radius: 50%;
+      animation: particleFloat var(--duration, 20s) linear infinite;
+      opacity: var(--opacity, 0.6);
+    }
+
+    @keyframes particleFloat {
+      0% { transform: translateY(100vh) translateX(0) rotate(0deg); opacity: 0; }
+      10% { opacity: var(--opacity, 0.6); }
+      90% { opacity: var(--opacity, 0.6); }
+      100% { transform: translateY(-100px) translateX(var(--drift, 50px)) rotate(360deg); opacity: 0; }
+    }
+
+    /* Animated wave overlay */
+    .wave-container {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 200px;
+      overflow: hidden;
+    }
+
+    .wave {
+      position: absolute;
+      bottom: 0;
+      left: -50%;
+      width: 200%;
+      height: 100%;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'%3E%3Cpath d='M0,60 C150,120 350,0 600,60 C850,120 1050,0 1200,60 L1200,120 L0,120 Z' fill='rgba(0,229,255,0.05)'/%3E%3C/svg%3E");
+      background-size: 50% 100%;
+      animation: waveFlow 15s linear infinite;
+    }
+
+    .wave:nth-child(2) {
+      animation-delay: -5s;
+      opacity: 0.5;
+      animation-duration: 20s;
+    }
+
+    .wave:nth-child(3) {
+      animation-delay: -10s;
+      opacity: 0.3;
+      animation-duration: 25s;
+    }
+
+    @keyframes waveFlow {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(50%); }
+    }
+
+    /* === CHAPTER PROGRESS INDICATOR === */
+    .chapter-progress {
+      position: fixed;
+      right: 2rem;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 100;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .progress-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.2);
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      cursor: pointer;
+      transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+      position: relative;
+    }
+
+    .progress-dot::before {
+      content: attr(data-label);
+      position: absolute;
+      right: 100%;
+      top: 50%;
+      transform: translateY(-50%);
+      padding-right: 1rem;
+      font-size: 0.75rem;
+      color: rgba(255, 255, 255, 0.5);
+      white-space: nowrap;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .progress-dot:hover::before {
+      opacity: 1;
+    }
+
+    .progress-dot.active {
+      background: var(--color-cyan);
+      border-color: var(--color-cyan);
+      box-shadow: 0 0 20px var(--color-cyan-glow);
+      transform: scale(1.3);
+    }
+
+    .progress-dot:hover {
+      border-color: var(--color-cyan);
+      transform: scale(1.2);
+    }
+
+    /* === 3D TILT CARDS === */
+    .tilt-card {
+      transform-style: preserve-3d;
+      transform: perspective(1000px);
+    }
+
+    .tilt-card-inner {
+      transition: transform 0.1s ease-out;
+    }
+
+    .tilt-card-shine {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.1) 0%,
+        transparent 50%,
+        transparent 100%
+      );
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      pointer-events: none;
+      border-radius: inherit;
+    }
+
+    .tilt-card:hover .tilt-card-shine {
+      opacity: 1;
+    }
+
+    /* === MORPHING BLOB BACKGROUNDS === */
+    .morphing-blob {
+      position: absolute;
+      border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+      background: linear-gradient(135deg, rgba(0, 229, 255, 0.15) 0%, rgba(0, 145, 255, 0.05) 100%);
+      filter: blur(40px);
+      animation: blobMorph 20s ease-in-out infinite;
+    }
+
+    @keyframes blobMorph {
+      0%, 100% { 
+        border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+        transform: rotate(0deg) scale(1);
+      }
+      25% { 
+        border-radius: 70% 30% 50% 50% / 30% 30% 70% 70%;
+        transform: rotate(90deg) scale(1.1);
+      }
+      50% { 
+        border-radius: 50% 60% 30% 60% / 70% 40% 70% 40%;
+        transform: rotate(180deg) scale(0.95);
+      }
+      75% { 
+        border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+        transform: rotate(270deg) scale(1.05);
+      }
+    }
+
+    /* === SCROLL-BASED TEXT REVEAL === */
+    .text-reveal {
+      overflow: hidden;
+    }
+
+    .text-reveal-inner {
+      transform: translateY(100%);
+      transition: transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    .text-reveal.active .text-reveal-inner {
+      transform: translateY(0);
+    }
+
+    /* === GLOWING LINE DIVIDERS === */
+    .glow-divider {
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, 
+        transparent 0%, 
+        var(--color-cyan) 20%, 
+        var(--color-cyan) 80%, 
+        transparent 100%
+      );
+      opacity: 0.3;
+      position: relative;
+      margin: 4rem 0;
+    }
+
+    .glow-divider::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 10px;
+      height: 10px;
+      background: var(--color-cyan);
+      border-radius: 50%;
+      box-shadow: 0 0 30px var(--color-cyan), 0 0 60px var(--color-cyan);
+      animation: pulseGlow 2s ease-in-out infinite;
+    }
+
+    @keyframes pulseGlow {
+      0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+      50% { transform: translate(-50%, -50%) scale(1.5); opacity: 0.7; }
+    }
+
+    /* === ANIMATED COUNTERS === */
+    .counter-value {
+      display: inline-block;
+      font-variant-numeric: tabular-nums;
+    }
+
+    /* === SECTION TRANSITIONS === */
+    .section-transition {
+      position: relative;
+    }
+
+    .section-transition::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 200px;
+      background: linear-gradient(to bottom, transparent, var(--next-section-color, #000428));
+      pointer-events: none;
+    }
+
+    /* === MAGNETIC BUTTON EFFECT === */
+    .btn-magnetic {
+      position: relative;
+      transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    /* === ANIMATED GRADIENT TEXT === */
+    .gradient-text-animated {
+      background: linear-gradient(
+        90deg, 
+        var(--color-white) 0%, 
+        var(--color-cyan) 25%, 
+        var(--color-white) 50%, 
+        var(--color-cyan) 75%, 
+        var(--color-white) 100%
+      );
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      animation: gradientShift 5s linear infinite;
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% center; }
+      100% { background-position: 200% center; }
+    }
+
+    /* === WATER SHIMMER EFFECT === */
+    .water-shimmer {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .water-shimmer::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(
+        45deg,
+        transparent 40%,
+        rgba(0, 229, 255, 0.08) 50%,
+        transparent 60%
+      );
+      animation: shimmer 4s ease-in-out infinite;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .water-shimmer > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    @keyframes shimmer {
+      0% { transform: translateX(-100%) translateY(-100%); }
+      100% { transform: translateX(100%) translateY(100%); }
+    }
+
+    /* === FLOATING ANIMATION VARIANTS === */
+    .float-slow {
+      animation: floatSlow 8s ease-in-out infinite;
+    }
+
+    .float-medium {
+      animation: floatMedium 5s ease-in-out infinite;
+    }
+
+    @keyframes floatSlow {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-20px) rotate(2deg); }
+    }
+
+    @keyframes floatMedium {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-15px) rotate(-1deg); }
+    }
+
+    /* === PULSING GLOW === */
+    .pulse-glow {
+      animation: pulseGlowAnim 3s ease-in-out infinite;
+    }
+
+    @keyframes pulseGlowAnim {
+      0%, 100% { 
+        box-shadow: 0 0 20px var(--color-cyan-glow), 0 0 40px rgba(0, 229, 255, 0.2); 
+      }
+      50% { 
+        box-shadow: 0 0 40px var(--color-cyan-glow), 0 0 80px rgba(0, 229, 255, 0.3); 
+      }
+    }
+
+    /* === TYPING CURSOR EFFECT === */
+    .typing-cursor::after {
+      content: '|';
+      animation: blink 1s step-end infinite;
+      color: var(--color-cyan);
+    }
+
+    @keyframes blink {
+      0%, 50% { opacity: 1; }
+      51%, 100% { opacity: 0; }
+    }
+
+    /* === GLASS MORPHISM ENHANCED === */
+    .glass-ultra {
+      background: rgba(255, 255, 255, 0.03);
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    }
+
+    /* === HOVER LIFT EFFECT === */
+    .hover-lift {
+      transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    .hover-lift:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    /* === STAGGERED CHILDREN ANIMATION === */
+    .stagger-children > * {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    .stagger-children.active > *:nth-child(1) { transition-delay: 0.1s; }
+    .stagger-children.active > *:nth-child(2) { transition-delay: 0.2s; }
+    .stagger-children.active > *:nth-child(3) { transition-delay: 0.3s; }
+    .stagger-children.active > *:nth-child(4) { transition-delay: 0.4s; }
+    .stagger-children.active > *:nth-child(5) { transition-delay: 0.5s; }
+    .stagger-children.active > *:nth-child(6) { transition-delay: 0.6s; }
+
+    .stagger-children.active > * {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* === RESPONSIVE PROGRESS INDICATOR === */
+    @media (max-width: 768px) {
+      .chapter-progress {
+        display: none;
+      }
+    }
+
     /* === CINEMATIC UTILITIES === */
     .container {
       width: min(90%, 1200px);
@@ -662,8 +1160,11 @@
     /* === THE PRODUCT CHAPTER === */
     .product-showcase {
       text-align: center;
+    }
+
+    .product-showcase .chapter-text {
       max-width: 600px;
-      margin: 0 auto;
+      margin: 0 auto 2rem;
     }
 
     .product-card-cinematic {
@@ -733,6 +1234,273 @@
       color: var(--color-white-muted);
       margin-bottom: 2rem;
       font-size: 1.1rem;
+    }
+
+    /* === PRICING GRID === */
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin-top: 3rem;
+      width: 100%;
+    }
+
+    @media (max-width: 1200px) {
+      .pricing-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem;
+      }
+    }
+
+    @media (max-width: 992px) {
+      .pricing-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+      }
+    }
+
+    @media (max-width: 680px) {
+      .pricing-grid {
+        grid-template-columns: 1fr;
+        max-width: 400px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+
+    .pricing-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 24px;
+      padding: 2rem;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.4s ease;
+      min-width: 0; /* Prevent grid blowout */
+    }
+
+    .pricing-card::before {
+      content: '';
+      position: absolute;
+      top: -100%;
+      left: -100%;
+      width: 300%;
+      height: 300%;
+      background: conic-gradient(from 0deg, transparent, rgba(76, 175, 80, 0.5), transparent 30%);
+      animation: borderRotate 4s linear infinite;
+      opacity: 0.15;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .pricing-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(0, 229, 255, 0.3);
+      box-shadow: 0 20px 60px rgba(0, 229, 255, 0.15);
+    }
+
+    .pricing-card.featured {
+      background: linear-gradient(135deg, rgba(0, 229, 255, 0.1) 0%, rgba(0, 119, 182, 0.15) 100%);
+      border-color: var(--color-cyan);
+      transform: scale(1.05);
+    }
+
+    .pricing-card.featured::before {
+      background: conic-gradient(from 0deg, transparent, var(--color-cyan), transparent 30%);
+      opacity: 0.2;
+    }
+
+    .pricing-card.featured:hover {
+      transform: scale(1.05) translateY(-8px);
+    }
+
+    .pricing-card.premium {
+      background: linear-gradient(135deg, rgba(138, 43, 226, 0.1) 0%, rgba(75, 0, 130, 0.15) 100%);
+      border-color: rgba(138, 43, 226, 0.5);
+    }
+
+    .pricing-card.premium::before {
+      background: conic-gradient(from 0deg, transparent, rgba(138, 43, 226, 0.8), transparent 30%);
+      opacity: 0.2;
+    }
+
+    .pricing-card.premium:hover {
+      border-color: rgba(138, 43, 226, 0.8);
+      box-shadow: 0 20px 60px rgba(138, 43, 226, 0.2);
+    }
+
+    .pricing-card-image {
+      width: 100%;
+      max-width: 200px;
+      height: 150px;
+      margin: 0 auto 1.5rem;
+      border-radius: 16px;
+      overflow: hidden;
+      position: relative;
+      z-index: 2;
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .pricing-card-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+
+    .pricing-card:hover .pricing-card-image img {
+      transform: scale(1.05);
+    }
+
+    .pricing-ribbon {
+      position: absolute;
+      top: 0;
+      right: 0;
+      background: linear-gradient(135deg, var(--color-cyan) 0%, var(--color-royal-blue) 100%);  
+      color: white;
+      padding: 0.35rem 2rem;
+      font-size: 0.65rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transform: translateX(30%) translateY(50%) rotate(45deg);
+      transform-origin: center center;
+      z-index: 10;
+      box-shadow: 0 2px 10px rgba(0, 229, 255, 0.3);
+      white-space: nowrap;
+    }
+
+    .pricing-card-content {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+    }
+
+    .pricing-badge {
+      display: inline-block;
+      padding: 0.4rem 1rem;
+      border-radius: 50px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 1rem;
+    }
+
+    .pricing-badge.free-badge {
+      background: rgba(76, 175, 80, 0.2);
+      color: #4CAF50;
+      border: 1px solid rgba(76, 175, 80, 0.4);
+    }
+
+    .pricing-badge.puck-badge {
+      background: rgba(0, 229, 255, 0.2);
+      color: var(--color-cyan);
+      border: 1px solid rgba(0, 229, 255, 0.4);
+    }
+
+    .pricing-badge.premium-badge {
+      background: rgba(138, 43, 226, 0.2);
+      color: #9D4EDD;
+      border: 1px solid rgba(138, 43, 226, 0.4);
+    }
+
+    .pricing-title {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .pricing-price {
+      font-family: var(--font-display);
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--color-white);
+      margin-bottom: 0.25rem;
+    }
+
+    .pricing-period {
+      font-size: 1rem;
+      font-weight: 400;
+      color: var(--color-white-muted);
+    }
+
+    .pricing-yearly {
+      font-size: 0.9rem;
+      color: var(--color-cyan);
+      margin-bottom: 1rem;
+    }
+
+    .pricing-description {
+      color: var(--color-white-muted);
+      font-size: 0.95rem;
+      margin-bottom: 1.5rem;
+      min-height: 50px;
+    }
+
+    .pricing-bonus {
+      background: linear-gradient(135deg, rgba(0, 229, 255, 0.15) 0%, rgba(0, 119, 182, 0.2) 100%);
+      border: 1px solid rgba(0, 229, 255, 0.3);
+      border-radius: 12px;
+      padding: 0.75rem 1rem;
+      margin-bottom: 1.5rem;
+      font-size: 0.9rem;
+      color: var(--color-cyan);
+      font-weight: 600;
+    }
+
+    .pricing-bonus i {
+      margin-right: 0.5rem;
+    }
+
+    .pricing-features {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 2rem 0;
+      text-align: left;
+    }
+
+    .pricing-features li {
+      padding: 0.5rem 0;
+      color: var(--color-white-muted);
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .pricing-features li i {
+      color: var(--color-cyan);
+      width: 20px;
+      text-align: center;
+    }
+
+    .pricing-card.premium .pricing-features li i {
+      color: #9D4EDD;
+    }
+
+    .btn-secondary {
+      background: transparent;
+      border: 2px solid var(--color-cyan);
+      color: var(--color-cyan);
+    }
+
+    .btn-secondary:hover {
+      background: var(--color-cyan);
+      color: var(--color-deep-blue);
+    }
+
+    .btn-tertiary {
+      background: linear-gradient(135deg, #8A2BE2 0%, #4B0082 100%);
+      border: none;
+      color: white;
+    }
+
+    .btn-tertiary:hover {
+      background: linear-gradient(135deg, #9D4EDD 0%, #6B238E 100%);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(138, 43, 226, 0.4);
     }
 
     /* === CALL TO ACTION === */
@@ -981,6 +1749,50 @@
 </head>
 
 <body>
+  <!-- IMMERSIVE PARALLAX OCEAN BACKGROUND -->
+  <div class="parallax-ocean" id="parallax-bg">
+    <div class="ocean-layer ocean-layer-1"></div>
+    <div class="ocean-layer ocean-layer-2"></div>
+    <div class="ocean-layer ocean-layer-3"></div>
+    
+    <!-- Light rays from surface -->
+    <div class="light-rays">
+      <div class="light-ray"></div>
+      <div class="light-ray"></div>
+      <div class="light-ray"></div>
+      <div class="light-ray"></div>
+      <div class="light-ray"></div>
+      <div class="light-ray"></div>
+    </div>
+    
+    <!-- Floating particles -->
+    <div class="particles" id="particles"></div>
+    
+    <!-- Morphing blobs -->
+    <div class="morphing-blob" style="width: 600px; height: 600px; top: 10%; left: -10%; animation-delay: 0s;"></div>
+    <div class="morphing-blob" style="width: 400px; height: 400px; top: 50%; right: -5%; animation-delay: -5s;"></div>
+    <div class="morphing-blob" style="width: 500px; height: 500px; bottom: 10%; left: 30%; animation-delay: -10s;"></div>
+    
+    <!-- Wave overlays -->
+    <div class="wave-container">
+      <div class="wave"></div>
+      <div class="wave"></div>
+      <div class="wave"></div>
+    </div>
+  </div>
+
+  <!-- CHAPTER PROGRESS INDICATOR -->
+  <div class="chapter-progress" id="chapter-progress">
+    <div class="progress-dot active" data-section="hero" data-label="Home"></div>
+    <div class="progress-dot" data-section="story" data-label="The Problem"></div>
+    <div class="progress-dot" data-section="discovery" data-label="Discovery"></div>
+    <div class="progress-dot" data-section="solution" data-label="Solution"></div>
+    <div class="progress-dot" data-section="technology" data-label="Technology"></div>
+    <div class="progress-dot" data-section="values" data-label="Values"></div>
+    <div class="progress-dot" data-section="product" data-label="Product"></div>
+    <div class="progress-dot" data-section="join" data-label="Join"></div>
+  </div>
+
   <!-- Navigation -->
   <nav class="navbar">
     <div class="container navbar-container">
@@ -1006,16 +1818,20 @@
     <!-- Floating droplets -->
     <div class="floating-droplet" style="--size: 30px; --duration: 12s; top: 20%; left: 10%;"></div>
     <div class="floating-droplet" style="--size: 50px; --duration: 18s; top: 30%; right: 15%;"></div>
-    <div class="floating-droplet" style="--size: 25px; --duration: 14s; top: 60%; left: 20%;"></div>
-    <div class="floating-droplet" style="--size: 40px; --duration: 16s; top: 70%; right: 25%;"></div>
-    <div class="floating-droplet" style="--size: 35px; --duration: 20s; bottom: 20%; left: 30%;"></div>
+    <div class="floating-droplet float-slow" style="--size: 25px; --duration: 14s; top: 60%; left: 20%;"></div>
+    <div class="floating-droplet float-medium" style="--size: 40px; --duration: 16s; top: 70%; right: 25%;"></div>
+    <div class="floating-droplet float-slow" style="--size: 35px; --duration: 20s; bottom: 20%; left: 30%;"></div>
+    <div class="floating-droplet" style="--size: 20px; --duration: 22s; top: 15%; right: 30%;"></div>
+    <div class="floating-droplet float-medium" style="--size: 45px; --duration: 25s; top: 80%; left: 60%;"></div>
+    <div class="floating-droplet" style="--size: 28px; --duration: 19s; top: 40%; right: 8%;"></div>
+    <div class="floating-droplet float-slow" style="--size: 32px; --duration: 17s; bottom: 35%; right: 40%;"></div>
 
     <div class="hero-content-cinematic">
       <span class="hero-overline">The Future of Hydration</span>
-      <h1 class="hero-title-cinematic">Keep the Bottle You Love.<br/>Gain the Insights You Need.</h1>
+      <h1 class="hero-title-cinematic gradient-text-animated">Keep the Bottle You Love.<br/>Gain the Insights You Need.</h1>
       <p class="hero-subtitle-cinematic">HydraSmart transforms any water bottle into an intelligent hydration companion. Our patent-pending puck snaps onto 95% of bottles, quietly tracking your intake and delivering personalized guidance—starting where it matters most.</p>
       <div class="hero-cta-group">
-        <a href="#product" class="btn-cinematic btn-primary">Pre-Order Now</a>
+        <a href="#product" class="btn-cinematic btn-primary pulse-glow">Pre-Order Now</a>
         <a href="#story" class="btn-cinematic btn-secondary">Discover Our Story</a>
       </div>
     </div>
@@ -1055,6 +1871,9 @@
     </div>
   </section>
 
+  <!-- GLOWING DIVIDER -->
+  <div class="glow-divider"></div>
+
   <!-- INTERLUDE: QUOTE -->
   <section class="chapter chapter-gradient">
     <div class="container">
@@ -1064,8 +1883,11 @@
     </div>
   </section>
 
+  <!-- GLOWING DIVIDER -->
+  <div class="glow-divider"></div>
+
   <!-- CHAPTER 2: THE DISCOVERY -->
-  <section class="chapter chapter-dark">
+  <section id="discovery" class="chapter chapter-dark">
     <div class="container">
       <div class="discovery-content reveal">
         <span class="chapter-number">Chapter Two</span>
@@ -1136,33 +1958,33 @@
         <p class="chapter-text" style="max-width: 700px; margin: 0 auto;">Our proprietary holistic algorithm doesn't just count ounces. It learns your patterns, integrates with your lifestyle, and adapts to your unique physiology.</p>
       </div>
 
-      <div class="tech-grid">
-        <div class="tech-card reveal">
+      <div class="tech-grid stagger-children reveal">
+        <div class="tech-card hover-lift water-shimmer">
           <div class="tech-card-icon"><i class="fas fa-brain"></i></div>
           <h4>Adaptive Algorithm</h4>
           <p>Machine learning that understands your habits, activity levels, and physiological needs to provide increasingly accurate recommendations.</p>
         </div>
-        <div class="tech-card reveal" style="transition-delay: 0.1s;">
+        <div class="tech-card hover-lift water-shimmer">
           <div class="tech-card-icon"><i class="fas fa-mobile-alt"></i></div>
           <h4>Health App Sync</h4>
           <p>Seamlessly integrates with Apple Health and your favorite fitness apps to build a complete picture of your wellness.</p>
         </div>
-        <div class="tech-card reveal" style="transition-delay: 0.2s;">
+        <div class="tech-card hover-lift water-shimmer">
           <div class="tech-card-icon"><i class="fas fa-bell"></i></div>
           <h4>Gentle Reminders</h4>
           <p>A subtle visual light on the puck reminds you to drink—no notification bombardment, no app dependency.</p>
         </div>
-        <div class="tech-card reveal" style="transition-delay: 0.3s;">
+        <div class="tech-card hover-lift water-shimmer">
           <div class="tech-card-icon"><i class="fas fa-chart-line"></i></div>
           <h4>Baseline Learning</h4>
           <p>3-7 day calibration period establishes your personal hydration fingerprint for truly customized targets.</p>
         </div>
-        <div class="tech-card reveal" style="transition-delay: 0.4s;">
+        <div class="tech-card hover-lift water-shimmer">
           <div class="tech-card-icon"><i class="fas fa-shield-alt"></i></div>
           <h4>Privacy First</h4>
           <p>Your health data stays yours. Edge processing means insights without compromising your privacy.</p>
         </div>
-        <div class="tech-card reveal" style="transition-delay: 0.5s;">
+        <div class="tech-card hover-lift water-shimmer">
           <div class="tech-card-icon"><i class="fas fa-infinity"></i></div>
           <h4>Lifetime Tracking</h4>
           <p>No subscriptions for core features. Buy the puck, own the experience—forever.</p>
@@ -1172,7 +1994,7 @@
   </section>
 
   <!-- CHAPTER 5: OUR VALUES -->
-  <section class="chapter chapter-gradient">
+  <section id="values" class="chapter chapter-gradient">
     <div class="container">
       <div class="mission-content reveal">
         <span class="chapter-number">Chapter Five</span>
@@ -1180,28 +2002,28 @@
         <p class="chapter-text" style="max-width: 700px; margin: 0 auto;">Our goal is not to add another app to manage, but to make hydration effortless, measurable, and reliable—starting with pregnancy, and built to scale far beyond it.</p>
       </div>
 
-      <div class="values-grid">
-        <div class="value-card reveal-left">
+      <div class="values-grid stagger-children reveal">
+        <div class="value-card hover-lift">
           <h5>Action Over Advice</h5>
           <p>Guidance only matters if it changes behavior. We turn vague advice into measurable action.</p>
         </div>
-        <div class="value-card reveal-right">
+        <div class="value-card hover-lift">
           <h5>Personalization Over Averages</h5>
           <p>Generic hydration rules fail real people. Our system adapts to individual biology, context, and habits.</p>
         </div>
-        <div class="value-card reveal-left" style="transition-delay: 0.1s;">
+        <div class="value-card hover-lift">
           <h5>Reduce Cognitive Load</h5>
           <p>Technology should disappear into the background—not demand attention.</p>
         </div>
-        <div class="value-card reveal-right" style="transition-delay: 0.1s;">
+        <div class="value-card hover-lift">
           <h5>Trust Is Engineered</h5>
           <p>Accuracy, restraint, and transparency matter more than hype. If we can't defend a claim, we don't make it.</p>
         </div>
-        <div class="value-card reveal-left" style="transition-delay: 0.2s;">
+        <div class="value-card hover-lift">
           <h5>Health First, Scale Second</h5>
           <p>We start where hydration has real consequences, and expand only after solving the hardest use case well.</p>
         </div>
-        <div class="value-card reveal-right" style="transition-delay: 0.2s;">
+        <div class="value-card hover-lift">
           <h5>Build Habits That Last</h5>
           <p>We optimize for long-term behavior change, not short-term engagement or notification fatigue.</p>
         </div>
@@ -1209,23 +2031,81 @@
     </div>
   </section>
 
+  <!-- GLOWING DIVIDER -->
+  <div class="glow-divider"></div>
+
   <!-- CHAPTER 6: THE PRODUCT -->
   <section id="product" class="chapter chapter-dark">
     <div class="container">
       <div class="product-showcase reveal">
         <span class="chapter-number">Chapter Six</span>
         <h2 class="chapter-title">Your Journey <span class="highlight">Begins</span></h2>
-        <p class="chapter-text" style="max-width: 600px; margin: 0 auto;">The HydraSmart Puck is designed for anyone who wants smarter, personalized hydration—where wellness truly matters most.</p>
+        <p class="chapter-text" style="max-width: 600px; margin: 0 auto;">Choose the hydration experience that fits your lifestyle.</p>
 
-        <div class="product-card-cinematic">
-          <div class="product-card-content">
-            <div class="product-card-image">
-              <img src="HydraSmartProduct.jfif" alt="HydraSmart Puck" />
+        <div class="pricing-grid">
+          <!-- FREE TIER -->
+          <div class="pricing-card">
+            <div class="pricing-card-content">
+              <div class="pricing-badge free-badge">Free</div>
+              <h3 class="pricing-title">Log a <span class="highlight">Shot</span></h3>
+              <div class="pricing-price">$0<span class="pricing-period">/forever</span></div>
+              <p class="pricing-description">Manual hydration tracking with smart insights—no hardware required.</p>
+              <ul class="pricing-features">
+                <li><i class="fas fa-camera"></i> Camera-based drink logging</li>
+                <li><i class="fas fa-pencil-alt"></i> Manual logging</li>
+                <li><i class="fas fa-lightbulb"></i> Adaptive recommendations (one-time)</li>
+                <li><i class="fas fa-heart"></i> Health app integration (read-only)</li>
+                <li><i class="fas fa-chart-line"></i> One-time 3-7 day baseline</li>
+                <li><i class="fas fa-bell"></i> Smart reminders</li>
+                <li><i class="fas fa-mobile-alt"></i> Full app access</li>
+              </ul>
+              <a href="#join" class="btn-cinematic btn-secondary">Get Started Free</a>
             </div>
-            <h3 class="product-title-cinematic">HydraSmart <span class="highlight">Puck</span></h3>
-            <div class="product-price-cinematic">$39.90</div>
-            <p class="product-description-cinematic">Includes the smart puck and full app access. Adaptive algorithms, health app integration, and gentle reminders designed for your wellness journey.</p>
-            <a href="#join" class="btn-cinematic btn-primary">Join the Waitlist</a>
+          </div>
+
+          <!-- PUCK TIER (FEATURED) -->
+          <div class="pricing-card featured">
+            <div class="pricing-card-content">
+              <div class="pricing-card-image">
+                <img src="HydraSmartProduct.jfif" alt="HydraSmart Puck" />
+              </div>
+              <div class="pricing-badge puck-badge">Hardware</div>
+              <h3 class="pricing-title">HydraSmart <span class="highlight">Puck</span></h3>
+              <div class="pricing-price">$39.90<span class="pricing-period"> one-time</span></div>
+              <p class="pricing-description">Smart puck with automatic tracking—works with any bottle you already own.</p>
+              <div class="pricing-bonus">
+                <i class="fas fa-gift"></i> Includes 3 months of Premium FREE!
+              </div>
+              <ul class="pricing-features">
+                <li><i class="fas fa-check-circle"></i> Everything in Free, plus:</li>
+                <li><i class="fas fa-water"></i> Automatic hydration tracking</li>
+                <li><i class="fas fa-sync"></i> Real-time sync with app</li>
+                <li><i class="fas fa-lightbulb"></i> Puck-light reminders</li>
+                <li><i class="fas fa-tag"></i> <strong>Permanent Premium discount ($2.99/mo or $24.99/yr)</strong></li>
+              </ul>
+              <a href="#join" class="btn-cinematic btn-primary">Join the Waitlist</a>
+            </div>
+          </div>
+
+          <!-- PREMIUM TIER -->
+          <div class="pricing-card premium">
+            <div class="pricing-card-content">
+              <div class="pricing-badge premium-badge">Premium</div>
+              <h3 class="pricing-title">HydraSmart <span class="highlight">Premium</span></h3>
+              <div class="pricing-price">$2.99<span class="pricing-period">/month</span></div>
+              <div class="pricing-yearly">or $24.99/year (save 30%)</div>
+              <p class="pricing-description">Advanced AI coaching for the ultimate personalized hydration experience.</p>
+              <ul class="pricing-features">
+                <li><i class="fas fa-check-circle"></i> Everything in Free, plus:</li>
+                <li><i class="fas fa-ruler-vertical"></i> Advanced depth-based Log a Shot</li>
+                <li><i class="fas fa-comments"></i> Natural Language Coach</li>
+                <li><i class="fas fa-lightbulb"></i> Adaptive recommendations</li>
+                <li><i class="fas fa-infinity"></i> Infinite 3-7 day baselines</li>
+                <li><i class="fas fa-sync-alt"></i> Health app two-way sync</li>
+                <li><i class="fas fa-chart-bar"></i> Comprehensive dehydration reports</li>
+              </ul>
+              <a href="#join" class="btn-cinematic btn-tertiary">Unlock Premium</a>
+            </div>
           </div>
         </div>
       </div>
@@ -1262,9 +2142,6 @@
             <span>Hydra<span class="highlight">Smart</span></span>
           </a>
           <p>HydraSmart exists to make hydration easier, more accurate, and more trustworthy—without asking users to change the bottle they already love.</p>
-          <div class="social-links">
-            <a href="https://www.instagram.com/_hydra.smart/" class="social-link" title="Instagram"><i class="fab fa-instagram"></i></a>
-          </div>
         </div>
         <div class="footer-column">
           <h5>Navigate</h5>
@@ -1291,7 +2168,7 @@
         </div>
       </div>
       <div class="footer-bottom">
-        <p>&copy; 2025 HydraSmart. All Rights Reserved. This device is a lifestyle product aimed at giving recommendations towards your hydration needs. HydraSmart does not guarantee a solution to any problems occurring as a result of dehydration.</p>
+        <p>&copy; 2026 HydraSmart. All Rights Reserved. This device is a lifestyle product aimed at giving recommendations towards your hydration needs. HydraSmart does not guarantee a solution to any problems occurring as a result of dehydration.</p>
       </div>
     </div>
   </footer>
@@ -1299,7 +2176,158 @@
   <!-- JAVASCRIPT -->
   <script>
     document.addEventListener('DOMContentLoaded', function() {
-      // Navbar scroll effect
+      
+      // === GENERATE FLOATING PARTICLES ===
+      const particlesContainer = document.getElementById('particles');
+      const particleCount = 50;
+      
+      for (let i = 0; i < particleCount; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        particle.style.setProperty('--size', `${Math.random() * 6 + 2}px`);
+        particle.style.setProperty('--duration', `${Math.random() * 20 + 15}s`);
+        particle.style.setProperty('--drift', `${Math.random() * 100 - 50}px`);
+        particle.style.setProperty('--opacity', `${Math.random() * 0.5 + 0.2}`);
+        particle.style.left = `${Math.random() * 100}%`;
+        particle.style.animationDelay = `${Math.random() * -20}s`;
+        particlesContainer.appendChild(particle);
+      }
+
+      // === PARALLAX BACKGROUND EFFECT ===
+      const parallaxBg = document.getElementById('parallax-bg');
+      const oceanLayers = document.querySelectorAll('.ocean-layer');
+      const morphingBlobs = document.querySelectorAll('.morphing-blob');
+      
+      window.addEventListener('scroll', () => {
+        const scrolled = window.pageYOffset;
+        const windowHeight = window.innerHeight;
+        const docHeight = document.documentElement.scrollHeight;
+        const scrollProgress = scrolled / (docHeight - windowHeight);
+        
+        // Shift background gradient based on scroll
+        const hue = 220 + (scrollProgress * 30);
+        parallaxBg.style.background = `linear-gradient(180deg, 
+          hsl(${hue}, 100%, 5%) 0%, 
+          hsl(${hue}, 80%, 18%) 30%, 
+          hsl(${hue}, 70%, 30%) 60%, 
+          hsl(190, 100%, 50%) 100%
+        )`;
+        
+        // Move ocean layers at different speeds
+        oceanLayers.forEach((layer, index) => {
+          const speed = 0.1 + (index * 0.05);
+          layer.style.transform = `translateY(${scrolled * speed}px)`;
+        });
+        
+        // Move blobs at different speeds
+        morphingBlobs.forEach((blob, index) => {
+          const speed = 0.05 + (index * 0.03);
+          blob.style.transform = `translateY(${scrolled * speed}px)`;
+        });
+      });
+
+      // === CHAPTER PROGRESS INDICATOR ===
+      const progressDots = document.querySelectorAll('.progress-dot');
+      const sections = [
+        { id: 'hero', element: document.querySelector('.hero-cinematic') },
+        { id: 'story', element: document.getElementById('story') },
+        { id: 'discovery', element: document.querySelector('.discovery-content')?.closest('.chapter') },
+        { id: 'solution', element: document.getElementById('solution') },
+        { id: 'technology', element: document.getElementById('technology') },
+        { id: 'values', element: document.querySelector('.values-grid')?.closest('.chapter') },
+        { id: 'product', element: document.getElementById('product') },
+        { id: 'join', element: document.getElementById('join') }
+      ].filter(s => s.element);
+      
+      const updateProgress = () => {
+        const scrollPosition = window.scrollY + window.innerHeight / 2;
+        
+        let activeIndex = 0;
+        sections.forEach((section, index) => {
+          if (section.element && scrollPosition >= section.element.offsetTop) {
+            activeIndex = index;
+          }
+        });
+        
+        progressDots.forEach((dot, index) => {
+          dot.classList.toggle('active', index === activeIndex);
+        });
+      };
+      
+      window.addEventListener('scroll', updateProgress);
+      updateProgress();
+      
+      // Click on progress dots to navigate
+      progressDots.forEach((dot) => {
+        dot.addEventListener('click', () => {
+          const sectionId = dot.dataset.section;
+          const section = sections.find(s => s.id === sectionId);
+          if (section && section.element) {
+            section.element.scrollIntoView({ behavior: 'smooth' });
+          }
+        });
+      });
+
+      // === 3D TILT EFFECT FOR CARDS ===
+      const tiltCards = document.querySelectorAll('.tech-card, .value-card, .glass-card');
+      
+      tiltCards.forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+          const rect = card.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+          const centerX = rect.width / 2;
+          const centerY = rect.height / 2;
+          const rotateX = (y - centerY) / 20;
+          const rotateY = (centerX - x) / 20;
+          
+          card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-10px)`;
+        });
+        
+        card.addEventListener('mouseleave', () => {
+          card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0)';
+        });
+      });
+
+      // === ANIMATED COUNTERS ===
+      const animateCounter = (element, target, duration = 2000) => {
+        let start = 0;
+        const increment = target / (duration / 16);
+        const isPercentage = element.textContent.includes('%');
+        const prefix = element.textContent.match(/^\D+/)?.[0] || '';
+        const suffix = element.textContent.match(/\D+$/)?.[0] || '';
+        
+        const updateCounter = () => {
+          start += increment;
+          if (start < target) {
+            element.textContent = prefix + Math.floor(start) + suffix;
+            requestAnimationFrame(updateCounter);
+          } else {
+            element.textContent = prefix + target + suffix;
+          }
+        };
+        
+        updateCounter();
+      };
+
+      // Trigger counters when visible
+      const counterElements = document.querySelectorAll('.problem-stat-number');
+      const counterObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting && !entry.target.dataset.animated) {
+            entry.target.dataset.animated = 'true';
+            const text = entry.target.textContent;
+            const number = parseInt(text.replace(/\D/g, ''));
+            if (number) {
+              animateCounter(entry.target, number);
+            }
+          }
+        });
+      }, { threshold: 0.5 });
+
+      counterElements.forEach(el => counterObserver.observe(el));
+
+      // === NAVBAR SCROLL EFFECT ===
       const navbar = document.querySelector('.navbar');
       window.addEventListener('scroll', () => {
         if (window.scrollY > 100) {
@@ -1309,7 +2337,7 @@
         }
       });
 
-      // Mobile menu toggle
+      // === MOBILE MENU TOGGLE ===
       const menuToggle = document.querySelector('.menu-toggle');
       const navLinks = document.querySelector('.nav-links');
       
@@ -1317,14 +2345,13 @@
         navLinks.classList.toggle('active');
       });
 
-      // Close menu on link click
       document.querySelectorAll('.nav-link').forEach(link => {
         link.addEventListener('click', () => {
           navLinks.classList.remove('active');
         });
       });
 
-      // Scroll reveal animations
+      // === SCROLL REVEAL ANIMATIONS ===
       const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale');
       
       const revealOnScroll = () => {
@@ -1340,13 +2367,24 @@
       };
 
       window.addEventListener('scroll', revealOnScroll);
-      revealOnScroll(); // Initial check
+      revealOnScroll();
 
-      // Smooth scroll for anchor links
+      // === SMOOTH SCROLL FOR ANCHOR LINKS ===
       document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
           e.preventDefault();
-          const target = document.querySelector(this.getAttribute('href'));
+          const href = this.getAttribute('href');
+          
+          // Handle scroll to top for logo or # links
+          if (href === '#' || href === '#top') {
+            window.scrollTo({
+              top: 0,
+              behavior: 'smooth'
+            });
+            return;
+          }
+          
+          const target = document.querySelector(href);
           if (target) {
             target.scrollIntoView({
               behavior: 'smooth',
@@ -1356,7 +2394,7 @@
         });
       });
 
-      // Parallax effect for floating droplets
+      // === PARALLAX FLOATING DROPLETS ===
       const droplets = document.querySelectorAll('.floating-droplet');
       window.addEventListener('scroll', () => {
         const scrolled = window.pageYOffset;
@@ -1365,6 +2403,37 @@
           droplet.style.transform = `translateY(${scrolled * speed}px)`;
         });
       });
+
+      // === MOUSE MOVE PARALLAX FOR HERO ===
+      const hero = document.querySelector('.hero-cinematic');
+      if (hero) {
+        hero.addEventListener('mousemove', (e) => {
+          const { clientX, clientY } = e;
+          const { innerWidth, innerHeight } = window;
+          const x = (clientX - innerWidth / 2) / innerWidth;
+          const y = (clientY - innerHeight / 2) / innerHeight;
+          
+          droplets.forEach((droplet, index) => {
+            const speed = 20 + (index * 10);
+            droplet.style.transform = `translate(${x * speed}px, ${y * speed}px)`;
+          });
+        });
+      }
+
+      // === HIDE PROGRESS INDICATOR ON MOBILE ===
+      const progressIndicator = document.getElementById('chapter-progress');
+      const handleResize = () => {
+        if (window.innerWidth < 768) {
+          progressIndicator.style.display = 'none';
+        } else {
+          progressIndicator.style.display = 'flex';
+        }
+      };
+      
+      window.addEventListener('resize', handleResize);
+      handleResize();
+      
+      console.log('🌊 HydraSmart Cinematic Experience Loaded');
     });
   </script>
 </body>
